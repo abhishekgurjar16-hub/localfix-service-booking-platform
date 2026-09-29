@@ -1,4 +1,4 @@
-# LocalFix — Service Booking Platform
+# servora — Service Booking Platform
 
 A full-stack service booking platform built with React, Bootstrap, Node.js, Express.js and PostgreSQL.
 
@@ -51,13 +51,13 @@ service-booking-platform/
 
 ## 2. Database
 
-Create a database named `localfix`.
+Create a database named `servora`.
 
 Run:
 
 ```bash
-psql -U postgres -c "CREATE DATABASE localfix;"
-psql -U postgres -d localfix -f database/schema.sql
+psql -U postgres -c "CREATE DATABASE servora;"
+psql -U postgres -d servora -f database/schema.sql
 ```
 
 Or open `database/schema.sql` in pgAdmin and execute it.
@@ -75,7 +75,7 @@ Example:
 
 ```env
 PORT=5000
-DATABASE_URL=postgresql://postgres:yourpassword@localhost:5432/localfix
+DATABASE_URL=postgresql://postgres:yourpassword@localhost:5432/servora
 JWT_SECRET=change_this_in_a_real_project
 CLIENT_URL=http://localhost:5173
 NODE_ENV=development

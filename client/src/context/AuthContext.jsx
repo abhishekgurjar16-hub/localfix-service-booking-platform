@@ -4,7 +4,7 @@ const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(() => {
-    const saved = localStorage.getItem("localfix_user");
+    const saved = localStorage.getItem("servora_user");
     return saved ? JSON.parse(saved) : null;
   });
 
@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const verify = async () => {
-      const token = localStorage.getItem("localfix_token");
+      const token = localStorage.getItem("servora_token");
 
       if (!token) {
         setLoading(false);
@@ -22,10 +22,10 @@ export const AuthProvider = ({ children }) => {
       try {
         const response = await api.get("/auth/me");
         setUser(response.data.user);
-        localStorage.setItem("localfix_user", JSON.stringify(response.data.user));
+        localStorage.setItem("servora_user", JSON.stringify(response.data.user));
       } catch {
-        localStorage.removeItem("localfix_token");
-        localStorage.removeItem("localfix_user");
+        localStorage.removeItem("servora_token");
+        localStorage.removeItem("servora_user");
         setUser(null);
       } finally {
         setLoading(false);
@@ -37,21 +37,21 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     const response = await api.post("/auth/login", { email, password });
-    localStorage.setItem("localfix_token", response.data.token);
-    localStorage.setItem("localfix_user", JSON.stringify(response.data.user));
+    localStorage.setItem("servora_token", response.data.token);
+    localStorage.setItem("servora_user", JSON.stringify(response.data.user));
     setUser(response.data.user);
   };
 
   const register = async (payload) => {
     const response = await api.post("/auth/register", payload);
-    localStorage.setItem("localfix_token", response.data.token);
-    localStorage.setItem("localfix_user", JSON.stringify(response.data.user));
+    localStorage.setItem("servora_token", response.data.token);
+    localStorage.setItem("servora_user", JSON.stringify(response.data.user));
     setUser(response.data.user);
   };
 
   const logout = () => {
-    localStorage.removeItem("localfix_token");
-    localStorage.removeItem("localfix_user");
+    localStorage.removeItem("servora_token");
+    localStorage.removeItem("servora_user");
     setUser(null);
   };
 

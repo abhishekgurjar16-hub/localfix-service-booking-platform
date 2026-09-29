@@ -25,7 +25,7 @@ const ProviderDashboard = () => {
 
       setServices(
         servicesResponse.data.services.filter((service) => {
-          return service.provider_id === JSON.parse(localStorage.getItem("localfix_user"))?.id;
+          return service.provider_id === JSON.parse(localStorage.getItem("servora_user"))?.id;
         })
       );
 

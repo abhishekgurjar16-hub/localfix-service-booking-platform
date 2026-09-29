@@ -26,7 +26,7 @@ const Home = () => {
                   Browse Services
                 </Link>
                 <Link className="btn btn-outline-dark btn-lg px-4" to="/register">
-                  Join LocalFix
+                  Join servora
                 </Link>
               </div>
             </div>
